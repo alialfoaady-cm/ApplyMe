@@ -1,0 +1,6 @@
+requests
+pyyaml
+anthropic
+pypdf
+fpdf2
+playwright

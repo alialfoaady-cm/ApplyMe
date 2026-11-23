@@ -1,0 +1,17 @@
+.env
+*.db
+__pycache__/
+venv/
+.venv/
+reports/
+tracker.csv
+company_boards.yaml
+cover_letters/
+
+# Personal files (examples with fake values: profile.example.yaml, config.example.yaml)
+profile.yaml
+config.yaml
+resume.pdf
+resume_source.docx
+*.docx
+.claude/settings.local.json

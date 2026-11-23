@@ -1,0 +1,68 @@
+# EXAMPLE settings. Copy it to config.yaml and edit:
+#     copy config.example.yaml config.yaml
+# config.yaml is in .gitignore. No secrets here: the API key goes in .env only.
+terms: [summer, fall, spring, year-round]   # any term is fine; summer 2027 (May-Aug) is the default favorite
+job_types: [internship, co-op]
+flag_if_longer_than_summer: true            # co-ops may conflict with classes; you decide
+target_roles:
+  priority_1: [software engineer intern, software engineering intern, SWE intern]
+  priority_2: [any technology internship: IT, data, QA, embedded, firmware, cybersecurity, DevOps, robotics]
+  priority_3_automotive: [automotive software, embedded, vehicle diagnostics, EV, ADAS, vehicle test, powertrain software, manufacturing engineering IT]
+  mechanical_or_other_engineering: only_if_posting_does_not_require_that_specific_major
+prefer_early_career_programs: true     # freshman/sophomore programs
+exclude_keywords: [senior, graduate student only, PhD, MBA, "must be a junior", "rising senior", "security clearance required"]
+gpa:
+  skip_if_posting_minimum_above: none      # apply anyway; only show a GPA flag
+  show_flag: true
+  flag_above:                 # optional: your GPA; postings with a higher minimum get an extra note
+location:
+  scope: michigan                      # michigan | michigan_plus_relocation | all
+  priority_states: [Michigan]
+  treat_remote_as_local: false        # false = in-person only; true = keep fully remote roles in scope
+  keep_excluded_in_database: true      # so changing scope later is instant
+  home: Your City, MI
+  commute_ok: Detroit metro area   # used for ranking only
+  relocate_only_if_mentions: [housing, relocation, stipend, travel reimbursement]
+tailoring:
+  enabled: false                       # flip to true only after the base pipeline works
+  min_fit_score: 85                    # out of 100
+  max_tailored_per_week: 5
+  requires_user_approval: true
+scoring:
+  model: claude-haiku-5-5              # cheapest current Claude model (~$0.0005 per role scored)
+  only_score_top_n_after_rules: 40
+  auto: true                           # score new roles automatically at the end of "ingest"
+  max_description_chars: 8000          # how much of each job description Claude reads
+budget:                                # every paid API call is logged in applyme.db (table api_calls)
+  total_usd: 5.00
+  hard_stop_usd: 4.00                  # calls are refused BEFORE sending if they could pass this
+limits:
+  max_new_postings_in_report: 30
+cover_letters:
+  write_when_optional: true            # always write one if the form allows it
+  research_company_first: true
+  max_words: 300
+  cache_company_research: true
+  research_cache_days: 90              # reuse a company's research for this long
+  research_model: claude-haiku-5-5     # web research (falls back to claude-sonnet-5-5 if Haiku can't search)
+  research_max_searches: 4             # $0.01 each
+  writer_model: claude-sonnet-5-5      # writes the letter (~$0.025); claude-haiku-5-5 is ~$0.002 but plainer
+  requires_user_review: true
+tracking:
+  database: applyme.db
+  daily_csv_export: tracker.csv
+  warn_if_roles_applied_at_company_at_least: 2
+  discord:
+    enabled: false                     # turn on once DISCORD_WEBHOOK_URL is set
+    mode: webhook                      # webhook first, bot buttons later
+    channel_name: applyme
+  mark_applied_automatically: false    # must stay false
+autofill:                              # Phase 4: python applyme.py browser / open N
+  chrome_path: C:\Program Files\Google\Chrome\Application\chrome.exe
+  profile_dir: '%LOCALAPPDATA%\ApplyMe\ChromeProfile'   # separate "ApplyMe" Chrome profile
+  debug_port: 9222                     # only reachable from this computer
+  model: claude-haiku-5-5              # only for questions not answered by profile/form_answers/cache
+  why_model: claude-haiku-5-5            # writes "why this company" answers (~$0.001 each + research once per company)
+  sites: [greenhouse, lever, ashby]    # workday comes in Phase 4b
+  refill_after_hours: 24
+auto_submit: false                     # must stay false

@@ -1,0 +1,40 @@
+# Starter list of company NAMES. Claude Code must verify each one has public internship postings and drop those that don't.
+# Automotive / mobility (Michigan first)
+Ford Motor Company
+General Motors
+Stellantis
+Rivian
+Lucid Motors
+Tesla
+Aptiv
+Bosch
+Magna
+Lear
+Visteon
+BorgWarner
+Denso
+Toyota Research Institute
+Waymo
+Zoox
+Nuro
+Mobileye
+# Tech
+Google
+Microsoft
+Meta
+Amazon
+Apple
+NVIDIA
+Intel
+Qualcomm
+Stripe
+Duolingo
+Cloudflare
+Datadog
+Palantir
+Anduril
+Rocket Companies
+Quicken Loans
+Ally Financial
+Domino's
+Gentex

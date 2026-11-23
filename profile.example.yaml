@@ -1,0 +1,90 @@
+# EXAMPLE profile with fake values. Copy it to profile.yaml and fill in your own details:
+#     copy profile.example.yaml profile.yaml
+# profile.yaml is in .gitignore so your real details are never committed. Blank = the tool pauses and asks.
+name:
+  first: Jordan
+  last: Example
+email: jordan.example@example.com
+phone: "(555) 010-0100"
+links:
+  github: https://github.com/your-username
+  linkedin: https://www.linkedin.com/in/your-profile
+location:
+  city: Detroit
+  state: Michigan
+  country: United States
+  street_address: 123 Example St
+  zip: "00000"
+education:
+  school: Example University
+  degree: Bachelor of Science
+  major: Computer Science
+  college: College of Engineering
+  graduation: May 2029
+  current_year: Sophomore
+  gpa: NEVER_ENTER       # GPA is never entered or stored; the tool pauses if a form requires it
+availability:
+  preferred_window: May 2027 to August 2027
+  summer_only: false
+  coop_ok: true
+work_authorization:
+  us_citizen: true
+  authorized_to_work_in_us: true
+  requires_sponsorship_now_or_future: false
+relocation:
+  willing: only_if_posting_mentions_housing_or_relocation_stipend
+languages: [English (fluent)]
+pronouns:                  # optional
+eeo:   # voluntary questions; "decline_to_answer" is always allowed
+  gender: decline_to_answer
+  race: decline_to_answer
+  hispanic_or_latino: decline_to_answer
+  veteran: decline_to_answer
+  disability: decline_to_answer
+other_defaults:
+  how_did_you_hear: Online job board
+  salary_expectation:    # pause and ask
+  previously_worked_for_company: No
+resume_file: resume.pdf
+# Facts the cover-letter and "why this company" writers may use. Only list things that are on your resume.
+highlights:
+  - "Example project: a small app built with Python (see resume)"
+  - "Example: a hackathon result"
+  - "Example: part-time job experience"
+# Autofill answers, used first (free). "ask" = words that identify the question.
+form_answers:
+  - ask: [major, field of study, area of study, discipline, program of study]
+    answer: Computer Science
+    fallback: [Computer Information Systems]   # used if "Computer Science" isn't an option
+  - ask: [worked for, previously employed, former employee, worked here, employed by, previously worked]
+    answer: "No"
+  - ask: [relative, relatives, family member, related to anyone, family]
+    answer: "No"
+  - ask: [start date, starting date, able to start, available to start, earliest start, when can you start,
+          when could you start, start working, begin working, availability date, earliest available date]
+    answer: May 2027
+    earliest: 2027-01-01                       # never a start date before this (or before today)
+  - ask: [work arrangement, work preference, preferred work, work setting, work environment preference,
+          workplace preference, work location preference, remote or in person, in person or remote,
+          remote or onsite, onsite or remote, remote hybrid, work model]
+    answer: In-person
+    fallback: [On-site, Onsite, In office, In-office, Office]
+  - ask: [availability, available, which terms, start date options]
+    answer: SELECT_ALL                         # tick every option offered (single-choice: closest, flagged)
+  - ask: [referred, referral, employee referral, who referred]
+    answer: "No"
+  # Consent rules (checked in this order). Confirming a FACT about yourself ("I certify...") always pauses.
+  - consent: marketing
+    ask: [marketing, promotional, promotions, newsletter, newsletters, talent community, special offers, advertising]
+    answer: "No"
+  - consent: texts/SMS for application updates
+    ask: [sms, text message, text messages, texts, text me, by text, via text, mobile messages]
+    answer: "Yes"
+  - consent: AI notetaker / recording
+    ask: [notetaker, note taker, note taking, notetaking, ai assistant, recording, recorded, transcription,
+          transcribe, transcribed]
+    answer: "Yes"
+  - consent: data/privacy/processing
+    ask: [privacy, personal data, personal information, data processing, processing of my, process my,
+          processing my, my data, my information, gdpr, data protection, retain my, retention, store my, ccpa]
+    answer: "Yes"
